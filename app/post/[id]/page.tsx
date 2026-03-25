@@ -1,8 +1,8 @@
-import Date from "@/app/component/date/page";
 import Layout from "@/app/component/layout/page";
 import { getPostData, getAllPostIds } from "@/lib/posts";
 import Head from "next/head";
 import utilStyles from "../../styles/utils.module.css";
+import Date from "../../component/date";
 
 // Generate static pages
 export function generateStaticParams() {

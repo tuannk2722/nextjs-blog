@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Layout, { siteTitle } from './component/layout/page';
 import utilStyles from './styles/utils.module.css';
 import Link from 'next/link';
-import Date from './component/date/page';
+import Date from './component/date';
 import { getSortedPostsData } from "@/lib/posts";
 
 // export default function Home() {
