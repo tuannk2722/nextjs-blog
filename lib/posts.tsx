@@ -60,12 +60,22 @@ export function getAllPostIds() {
 //   };
 // }
 
-export async function getPostData(id: string) {
+type PostData = {
+  id: string
+  contentHtml: string
+  title: string
+  date: string
+}
+
+export async function getPostData(id: string): Promise<PostData> {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Parse metadata
   const matterResult = matter(fileContents);
+
+  // 👇 ép kiểu rõ ràng
+  const data = matterResult.data as { title: string; date: string };
 
   // Convert markdown → HTML
   const processedContent = await remark()
@@ -77,6 +87,6 @@ export async function getPostData(id: string) {
   return {
     id,
     contentHtml,
-    ...matterResult.data,
+    ...data,
   };
 }

@@ -21,17 +21,19 @@ export default async function Post({
 
   return (
     <Layout home>
-      <Head>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-      </Head>
-      <div className={utilStyles.lightText}>
-        <Date dateString={postData.date} />
-      </div>
+      <Layout home>
+        <Head>
+          <title>{postData.title}</title>
+        </Head>
 
-      {/* Render HTML từ markdown */}
-      <div
-        dangerouslySetInnerHTML={{ __html: postData.contentHtml }}
-      />
+        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
+
+        <div className={utilStyles.lightText}>
+          <Date dateString={postData.date} />
+        </div>
+
+        <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      </Layout>
     </Layout>
   );
 }
